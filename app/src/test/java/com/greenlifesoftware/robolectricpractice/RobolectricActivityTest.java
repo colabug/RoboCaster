@@ -1,10 +1,7 @@
 package com.greenlifesoftware.robolectricpractice;
 
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.greenlifesoftware.robolectricpractice.support.ResourceLocator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +12,8 @@ import org.robolectric.annotation.Config;
 
 import static com.greenlifesoftware.robolectricpractice.support.Assert.assertViewIsVisible;
 import static com.greenlifesoftware.robolectricpractice.support.ResourceLocator.*;
+import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getEditText;
+import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getTextView;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
@@ -47,7 +46,7 @@ public class RobolectricActivityTest
     @Test
     public void shouldHaveWelcomeText() throws Exception
     {
-        TextView welcomeText = (TextView) activity.findViewById( R.id.welcome_text );
+        TextView welcomeText = getTextView( activity, R.id.welcome_text );
         assertViewIsVisible( welcomeText );
         assertThat( welcomeText.getText().toString(),
                     equalTo( getString( R.string.welcome_text ) ) );
@@ -56,7 +55,7 @@ public class RobolectricActivityTest
     @Test
     public void shouldHaveNameEntry() throws Exception
     {
-        EditText nameEntry = (EditText) activity.findViewById( R.id.name_entry );
+        EditText nameEntry = getEditText(activity, R.id.name_entry);
         assertViewIsVisible( nameEntry );
         assertThat( nameEntry.getHint().toString(),
                     equalTo( getString( R.string.name_entry_hint ) ) );
