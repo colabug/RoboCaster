@@ -1,5 +1,10 @@
 package com.greenlifesoftware.robolectricpractice;
 
+import android.view.View;
+import android.widget.TextView;
+
+import com.greenlifesoftware.robolectricpractice.support.ResourceLocator;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +12,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import static com.greenlifesoftware.robolectricpractice.support.Assert.assertViewIsVisible;
 import static com.greenlifesoftware.robolectricpractice.support.ResourceLocator.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -35,5 +41,14 @@ public class RobolectricActivityTest
     {
         assertThat( activity.getTitle().toString(),
                     equalTo( getString( R.string.app_name ) ) );
+    }
+
+    @Test
+    public void shouldHaveWelcomeText() throws Exception
+    {
+        TextView welcomeText = (TextView) activity.findViewById( R.id.welcome_text );
+        assertViewIsVisible( welcomeText );
+        assertThat( welcomeText.getText().toString(),
+                    equalTo( getString( R.string.welcome_text ) ) );
     }
 }
