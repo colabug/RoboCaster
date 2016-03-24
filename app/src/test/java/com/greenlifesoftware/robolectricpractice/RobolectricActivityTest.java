@@ -1,6 +1,7 @@
 package com.greenlifesoftware.robolectricpractice;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.greenlifesoftware.robolectricpractice.support.ResourceLocator;
@@ -50,5 +51,14 @@ public class RobolectricActivityTest
         assertViewIsVisible( welcomeText );
         assertThat( welcomeText.getText().toString(),
                     equalTo( getString( R.string.welcome_text ) ) );
+    }
+
+    @Test
+    public void shouldHaveNameEntry() throws Exception
+    {
+        EditText nameEntry = (EditText) activity.findViewById( R.id.name_entry );
+        assertViewIsVisible( nameEntry );
+        assertThat( nameEntry.getHint().toString(),
+                    equalTo( getString( R.string.name_entry_hint ) ) );
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RobolectricPractice</string>
     <string name="welcome_text">Hello there</string>
+    <string name="name_entry_hint">Please enter your name</string>
 </resources>

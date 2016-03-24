@@ -15,4 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_text"/>
+
+    <EditText
+        android:id="@+id/name_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_entry_hint"/>
 </RelativeLayout>
