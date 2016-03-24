@@ -12,10 +12,17 @@ import static org.junit.Assert.assertNotNull;
 @Config(constants = BuildConfig.class, sdk = 21)
 public class RobolectricActivityTest
 {
+    private RobolectricActivity activity;
+
+    @Before
+    public void setUp() throws Exception
+    {
+        activity = Robolectric.setupActivity( RobolectricActivity.class );
+    }
+
     @Test
     public void shouldNotBeNull() throws Exception
     {
-        RobolectricActivity activity = Robolectric.setupActivity( RobolectricActivity.class );
         assertNotNull( activity );
     }
 }
