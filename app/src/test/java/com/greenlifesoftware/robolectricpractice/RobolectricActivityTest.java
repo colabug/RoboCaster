@@ -6,6 +6,10 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+
+import static com.greenlifesoftware.robolectricpractice.support.ResourceLocator.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(RobolectricGradleTestRunner.class)
@@ -24,5 +28,12 @@ public class RobolectricActivityTest
     public void shouldNotBeNull() throws Exception
     {
         assertNotNull( activity );
+    }
+
+    @Test
+    public void shouldHaveTitle() throws Exception
+    {
+        assertThat( activity.getTitle().toString(),
+                    equalTo( getString( R.string.app_name ) ) );
     }
 }
