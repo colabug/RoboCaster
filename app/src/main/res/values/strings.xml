@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RobolectricPractice</string>
+    <string name="WELCOME_TEXT">Hello!</string>
 </resources>
