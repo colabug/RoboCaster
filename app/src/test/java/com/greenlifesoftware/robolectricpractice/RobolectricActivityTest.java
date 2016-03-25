@@ -1,5 +1,7 @@
 package com.greenlifesoftware.robolectricpractice;
 
+import com.greenlifesoftware.robolectricpractice.support.ResourceLocator;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,7 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
+import static com.greenlifesoftware.robolectricpractice.support.ResourceLocator.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -34,6 +37,6 @@ public class RobolectricActivityTest
     public void shouldHaveTitle() throws Exception
     {
         assertThat( activity.getTitle().toString(),
-                    equalTo( RuntimeEnvironment.application.getString( R.string.app_name ) ) );
+                    equalTo( getString( R.string.app_name ) ) );
     }
 }
