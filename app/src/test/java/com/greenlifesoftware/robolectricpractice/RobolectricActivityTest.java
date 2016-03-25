@@ -73,4 +73,10 @@ public class RobolectricActivityTest
         assertThat( button.getText().toString(),
                     equalTo( getString( R.string.login_button ) ) );
     }
+
+    @Test
+    public void shouldHaveFragment() throws Exception
+    {
+        assertNotNull(activity.getFragmentManager().findFragmentById( R.id.fragment_view ));
+    }
 }

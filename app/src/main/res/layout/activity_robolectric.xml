@@ -27,4 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button"/>
+
+    <fragment
+        android:id="@+id/fragment_view"
+        android:name="com.greenlifesoftware.robolectricpractice.BasicFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
