@@ -1,5 +1,6 @@
 package com.greenlifesoftware.robolectricpractice;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import org.robolectric.annotation.Config;
 
 import static com.greenlifesoftware.robolectricpractice.support.Assert.assertViewIsVisible;
 import static com.greenlifesoftware.robolectricpractice.support.ResourceLocator.*;
+import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getButton;
 import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getEditText;
 import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getTextView;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -61,5 +63,14 @@ public class RobolectricActivityTest
         assertViewIsVisible( nameEntry );
         assertThat( nameEntry.getHint().toString(),
                     equalTo( ResourceLocator.getString( R.string.NAME_ENTRY_HINT ) ) );
+    }
+
+    @Test
+    public void shouldHaveLoginButton() throws Exception
+    {
+        Button loginButton = getButton( activity, R.id.login_button );
+        assertViewIsVisible( loginButton );
+        assertThat( loginButton.getText().toString(),
+                    equalTo( getString( R.string.LOGIN_BUTTON_TEXT ) ) );
     }
 }

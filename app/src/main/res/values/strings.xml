@@ -2,4 +2,5 @@
     <string name="app_name">RobolectricPractice</string>
     <string name="WELCOME_TEXT">Hello!</string>
     <string name="NAME_ENTRY_HINT">Please enter your name</string>
+    <string name="LOGIN_BUTTON_TEXT">Login</string>
 </resources>
