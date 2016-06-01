@@ -4,4 +4,5 @@
     <string name="NAME_ENTRY_HINT">Please enter your name</string>
     <string name="LOGIN_BUTTON_TEXT">Login</string>
     <string name="HINT_BUTTON_TEXT">Hint!</string>
+    <string name="HINT_TEXT">Enter your name and click the login button.</string>
 </resources>

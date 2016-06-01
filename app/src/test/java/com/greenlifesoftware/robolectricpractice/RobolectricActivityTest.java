@@ -19,17 +19,20 @@ import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getT
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.robolectric.shadows.ShadowToast.getTextOfLatestToast;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class RobolectricActivityTest
 {
     private RobolectricActivity activity;
+    private Button hintButton;
 
     @Before
     public void setUp() throws Exception
     {
         activity = Robolectric.setupActivity( RobolectricActivity.class );
+        hintButton = getButton( activity, R.id.hint_button );
     }
 
     @Test
@@ -66,10 +69,17 @@ public class RobolectricActivityTest
     @Test
     public void shouldHaveHintButton() throws Exception
     {
-        Button hintButton = getButton( activity, R.id.hint_button );
         assertViewIsVisible( hintButton );
         assertThat( hintButton.getText().toString(),
                     equalTo( getString( R.string.HINT_BUTTON_TEXT ) ));
+    }
+
+    @Test
+    public void shouldShowHintWhenClicked() throws Exception
+    {
+        hintButton.performClick();
+        assertThat( getTextOfLatestToast(),
+                    equalTo( getString( R.string.HINT_TEXT ) ) );
     }
 
     @Test
