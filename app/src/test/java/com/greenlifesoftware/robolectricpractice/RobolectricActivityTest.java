@@ -4,8 +4,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.greenlifesoftware.robolectricpractice.support.ResourceLocator;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,7 +60,7 @@ public class RobolectricActivityTest
         EditText nameEntry = getEditText( activity, R.id.name_entry );
         assertViewIsVisible( nameEntry );
         assertThat( nameEntry.getHint().toString(),
-                    equalTo( ResourceLocator.getString( R.string.NAME_ENTRY_HINT ) ) );
+                    equalTo( getString( R.string.NAME_ENTRY_HINT ) ) );
     }
 
     @Test
