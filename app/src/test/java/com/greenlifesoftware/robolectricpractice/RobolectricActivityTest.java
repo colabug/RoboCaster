@@ -66,6 +66,15 @@ public class RobolectricActivityTest
     }
 
     @Test
+    public void shouldHaveHintButton() throws Exception
+    {
+        Button hintButton = getButton( activity, R.id.hint_button );
+        assertViewIsVisible( hintButton );
+        assertThat( hintButton.getText().toString(),
+                    equalTo( getString( R.string.HINT_BUTTON_TEXT ) ));
+    }
+
+    @Test
     public void shouldHaveLoginButton() throws Exception
     {
         Button loginButton = getButton( activity, R.id.login_button );
