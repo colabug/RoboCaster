@@ -1,5 +1,6 @@
 package com.greenlifesoftware.robolectricpractice;
 
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowActivity;
+import org.robolectric.shadows.ShadowIntent;
 
 import static com.greenlifesoftware.robolectricpractice.support.Assert.assertViewIsVisible;
 import static com.greenlifesoftware.robolectricpractice.support.ResourceLocator.*;
@@ -17,8 +20,10 @@ import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getB
 import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getEditText;
 import static com.greenlifesoftware.robolectricpractice.support.ViewLocator.getTextView;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.robolectric.Shadows.*;
 import static org.robolectric.shadows.ShadowToast.getTextOfLatestToast;
 
 @RunWith(RobolectricGradleTestRunner.class)
@@ -27,12 +32,14 @@ public class RobolectricActivityTest
 {
     private RobolectricActivity activity;
     private Button hintButton;
+    private Button loginButton;
 
     @Before
     public void setUp() throws Exception
     {
         activity = Robolectric.setupActivity( RobolectricActivity.class );
         hintButton = getButton( activity, R.id.hint_button );
+        loginButton = getButton( activity, R.id.login_button );
     }
 
     @Test
@@ -85,9 +92,20 @@ public class RobolectricActivityTest
     @Test
     public void shouldHaveLoginButton() throws Exception
     {
-        Button loginButton = getButton( activity, R.id.login_button );
         assertViewIsVisible( loginButton );
         assertThat( loginButton.getText().toString(),
                     equalTo( getString( R.string.LOGIN_BUTTON_TEXT ) ) );
+    }
+
+    @Test
+    public void shouldLoginWhenLoginButtonClicked() throws Exception
+    {
+        loginButton.performClick();
+
+        ShadowActivity shadowActivity = shadowOf( activity );
+        Intent intent = shadowActivity.getNextStartedActivity();
+        ShadowIntent shadowIntent = shadowOf( intent );
+        assertEquals( shadowIntent.getComponent().getClassName(),
+                      SecondActivity.class.getName() );
     }
 }

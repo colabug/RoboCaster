@@ -22,5 +22,14 @@ public class RobolectricActivity extends AppCompatActivity
                      .show();
             }
         } );
+
+        findViewById( R.id.login_button).setOnClickListener( new View.OnClickListener()
+        {
+            @Override
+            public void onClick( View view )
+            {
+                startActivity( SecondActivity.newIntent( RobolectricActivity.this ) );
+            }
+        } );
     }
 }
