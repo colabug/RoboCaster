@@ -78,7 +78,7 @@ public class RobolectricActivityTest
     {
         assertViewIsVisible( hintButton );
         assertThat( hintButton.getText().toString(),
-                    equalTo( getString( R.string.HINT_BUTTON_TEXT ) ));
+                    equalTo( getString( R.string.HINT_BUTTON_TEXT ) ) );
     }
 
     @Test
